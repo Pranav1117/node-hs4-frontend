@@ -3,7 +3,7 @@ import React from "react";
 const Registered = (props) => {
   // const location = useLocation();
   console.log(props);
-  const status = "";
+  //const status = "";
   return (
     <div>
       <h1>{props}</h1>
