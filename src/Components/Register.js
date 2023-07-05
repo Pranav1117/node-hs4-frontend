@@ -45,11 +45,16 @@ const Register = () => {
       .post("http://localhost:7000/user/register", tempObj)
       .then((res) => {
         //console.log(res.data);
+        console.log(res);
         const status = res.data;
         console.log("status", status);
         //setRegisterStatus(res.data);
         <Registered status={status} />;
-        nav("/user/registered", { state: status });
+        if (status === "User registered Succuessfully") {
+          nav("/", { state: status });
+        } else {
+          nav("/user/login", { state: status });
+        }
       })
       .catch((err) => {
         console.log(err);

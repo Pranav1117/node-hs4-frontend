@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import './style.css'
+import "./style.css";
 const Login = () => {
   const nav = useNavigate();
- // const [loginStatus, setLogInStatus] = useState("");
+  // const [loginStatus, setLogInStatus] = useState("");
 
   const [formLoginData, setLoginFormData] = useState({
     email: "",
@@ -28,10 +28,14 @@ const Login = () => {
     axios
       .post("http://localhost:7000/user/login", tempObj)
       .then((res) => {
-        console.log(res.data);
+        console.log(res);
         //setLogInStatus(res.data);
-        const status=res.data
-        nav("/user/LoggedIn", { state: status });
+        const status = res.data;
+        if (status === "login Successfull") {
+          nav("/", { state: status });
+        } else {
+          nav("/user/loggedin", { state: status });
+        }
       })
       .catch((err) => {
         console.log(err);
