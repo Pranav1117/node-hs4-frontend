@@ -4,7 +4,7 @@ import axios from "axios";
 import './style.css'
 const Login = () => {
   const nav = useNavigate();
-  const [loginStatus, setLogInStatus] = useState("");
+ // const [loginStatus, setLogInStatus] = useState("");
 
   const [formLoginData, setLoginFormData] = useState({
     email: "",
@@ -26,15 +26,16 @@ const Login = () => {
     arr.push(tempObj);
     setformdata({ data: arr });*/
     axios
-      .post("http://localhost:8000/user/login", tempObj)
+      .post("http://localhost:7000/user/login", tempObj)
       .then((res) => {
         console.log(res.data);
-        setLogInStatus(res.data);
+        //setLogInStatus(res.data);
+        const status=res.data
+        nav("/user/LoggedIn", { state: status });
       })
       .catch((err) => {
         console.log(err);
       });
-    nav("/user/LoggedIn", { state: loginStatus });
   };
   return (
     <div className="App">

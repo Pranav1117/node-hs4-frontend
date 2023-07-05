@@ -6,9 +6,10 @@ import Registered from "./Registered";
 
 const storedData = [];
 
-const Form = () => {
+const Register = () => {
   const nav = useNavigate();
-  // const [registerStatus, setRegisterStatus] = useState("");
+  //const [registerStatus, setRegisterStatus] = useState("");
+  //const [userData, setUserData] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     contactNo: "",
@@ -41,14 +42,14 @@ const Form = () => {
     console.log("in submit", formData);
 
     axios
-      .post("http://localhost:8000/user/register", tempObj)
+      .post("http://localhost:7000/user/register", tempObj)
       .then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
         const status = res.data;
         console.log("status", status);
         //setRegisterStatus(res.data);
-        nav("/user/registered");
         <Registered status={status} />;
+        nav("/user/registered", { state: status });
       })
       .catch((err) => {
         console.log(err);
@@ -61,7 +62,7 @@ const Form = () => {
         <div className="form-modal">
           {" "}
           <h1>FORM</h1>
-          <form action="/registered" method="post">
+          <form method="post">
             <h2>Register Acount</h2>
 
             <label>Name :</label>
@@ -120,4 +121,4 @@ const Form = () => {
     </div>
   );
 };
-export default Form;
+export default Register;
