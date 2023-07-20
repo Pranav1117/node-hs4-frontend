@@ -42,7 +42,7 @@ const Register = () => {
     console.log("in submit", formData);
 
     axios
-      .post("http://localhost:7000/user/register", tempObj)
+      .post("https://node-hs-4.onrender.com/user/register", tempObj)
       .then((res) => {
         //console.log(res.data);
         console.log(res);

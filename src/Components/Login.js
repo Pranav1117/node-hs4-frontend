@@ -26,7 +26,7 @@ const Login = () => {
     arr.push(tempObj);
     setformdata({ data: arr });*/
     axios
-      .post("http://localhost:7000/user/login", tempObj)
+      .post("https://node-hs-4.onrender.com/user/login", tempObj)
       .then((res) => {
         console.log(res);
         //setLogInStatus(res.data);
